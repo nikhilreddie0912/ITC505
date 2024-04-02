@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab 6 - Holy Grail Layout</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>HOLY GRAIL LAYOUT</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="content-wrapper">
+            <main>
+                <h2>Fun with JavaScript!</h2>
+                <p>Enter a number then<br> Click to see if it's EVEN?ODD.</p>
+                <input type="number" id="numberInput">
+                <button onclick="checkEvenOdd()">Check Even/Odd</button>
+                <p id="result"></p>
+            </main>
+            <aside>
+                <a href="https://www.amazon.com/Virat-Kohli-Legend-Biography-Biographies/dp/B09ZD2TMZQ/ref=sr_1_1?crid=22OQ7AELRG877&dib=eyJ2IjoiMSJ9.8IqevfE3eOIPDVv40Y5cuOwrShtjmd7Eig7s-rZYY7NLPnfKcnjTASosjW5GHZ8HY4xkehAwDl25DaeKT3avJbljBRyKQC-_c3fkBOYpv3tjI-gAQJFcyqBAkt5hNVwFo3WeXLtpGXwcmwCh0GOxlReYc-7_Q1rh4wZ7N6iv9FyZC4TZqJUOvTDpTv1n7rf7SRsvYm0o3exx9yuV0429-cNbwVmUctug2iJZ9Q5vUHc.GB2vCbKz-PMICiW-xbhhXGxjBivR1kT_1YzOENe_cIY&dib_tag=se&keywords=virat+kohli+book&qid=1712028631&sprefix=Virat+kohli+%2Caps%2C229&sr=8-1" target="_blank">
+                    <img src="VIRAT KOHLI.jpg" alt="Advertisement">
+                </a>
+            </aside>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p>Addendum:</p>
+                <p>This JavaScript program checks if a number entered by the user is even or odd. It retrieves the number from the input field, checks if the modulo by 2 is 0, and displays the result in a paragraph element.</p>
+                <p>Solution:</p>
+                <p>The program retrieves the number from the input field using document.getElementById("numberInput"). It then parses the value to a number using parseInt(numberInput.value). The modulo operator (%) is used to check if the remainder after dividing the number by 2 is 0. If the remainder is 0, the number is even. Otherwise, it's odd. Finally, the result is displayed in the paragraph element with the id "result".</p>
+                <p>Difficulties Encountered:</p>
+                <p>There weren't any significant difficulties encountered in this simple program.</p>
+            </div>
+            <p>Last updated: <span id="lastModified"></span></p>
+        </footer>
+        <script type="text/javascript">
+            var x = document.lastModified;
+            document.getElementById('lastModified').textContent = x;
+        </script>
+    </body>
+    </html>
