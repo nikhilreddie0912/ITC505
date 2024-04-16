@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="index.css">
+<title>MAD LIB</title>
+</head>
+<body>
+
+<h2>MAD LIB</h2>
+<form action="/submit" method="post" class="form-example">
+    <div>
+        <label for="noun1">Enter a noun:</label>
+        <input type="text" id="noun1" name="noun1" required>
+    </div>
+    <div>
+        <label for="verb1">Enter a verb:</label>
+        <input type="text" id="verb1" name="verb1" required>
+    </div>
+    <div>
+        <label for="adjective1">Enter an adjective:</label>
+        <input type="text" id="adjective1" name="adjective1" required>
+    </div>
+    <div>
+        <label for="noun2">Enter another noun:</label>
+        <input type="text" id="noun2" name="noun2" required>
+    </div>
+    <div>
+        <label for="verb2">Enter another verb:</label>
+        <input type="text" id="verb2" name="verb2" required>
+    </div>
+    <div>
+        <label for="adjective2">Enter another adjective:</label>
+        <input type="text" id="adjective2" name="adjective2" required>
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+<footer>
+    <div class="Addendum">
+        <p><center><strong>ADDENDUM:</strong></center></p>
+        <p><strong>HTML Structure:</strong></p>
+        <ol>1. The HTML structure includes a form with input fields for various words (nouns, verbs, adjectives).</ol>
+        <ol>2. Each input field is labeled appropriately to guide the user.</ol>
+        <ol>3. There's a submit button to trigger form submission.</ol>
+        <p><strong>CSS Styling:</strong></p>
+        <ol>1. CSS is used to style the form and make it visually appealing.</ol>
+        <ol>2. The form is centered on the page and styled with appropriate padding, borders, and colors.</ol>
+        <ol>3. Input fields have consistent styling for better user experience.</ol>
+        <ol>4. The submit button has a contrasting color to make it stand out.</ol>
+        <p><strong>JavaScript for Form Handling:</strong></p>
+        <ol>1. JavaScript is used to handle form submission and dynamically generate the mad lib.</ol>
+        <ol>2. An event listener is added to the form to capture form submission events.</ol>
+        <ol>3. When the form is submitted, the event listener prevents the default form submission behavior.</ol>
+        <ol>4. The form data is retrieved using the FormData API, which allows easy access to the values entered by the user.</ol>
+        <ol>5. Using the retrieved form data, a mad lib sentence is constructed using string interpolation.</ol>
+        <ol>6. The filled-in mad lib is then displayed to the user on the page.</ol>
+        <p><strong>Overall Approach:</strong></p>
+        <ol>1. The code follows a modular approach, separating HTML, CSS, and JavaScript into different files for better organization and maintainability.</ol>
+        <ol>2. Semantic HTML elements are used for better accessibility and SEO.</ol>
+        <ol>3. CSS is used to enhance the visual appearance of the form and provide a consistent user experience.</ol>
+        <ol>4. JavaScript is used to enhance interactivity by handling form submission and dynamically updating the content without page reload.</ol>
+        <ol>5. <strong>FormData API:</strong> The FormData API is used to easily capture form data. This provides a convenient way to access form field values without manually querying each input element.</ol>
+        <ol>6. <strong>String Interpolation:</strong> String interpolation (using backticks and ${}) is used to construct the mad lib sentence. This allows for cleaner and more readable code compared to concatenating strings.</ol>
+        <ol>7. <strong>Event-driven Approach:</strong> JavaScript is used to handle form submission and dynamically update the content. This approach provides a smoother user experience by avoiding full page reloads.</ol>
+        <ol>Overall, the code aims to create a user-friendly and visually appealing mad lib form while leveraging HTML, CSS, and JavaScript to provide interactivity and functionality.</ol>
+
+    <strong><p><center>Last updated: 
+        <span id="lastModified"></span></center>
+    </p></strong>
+</footer>
+<script type="text/javascript">
+     var x = document.lastModified;
+     document.getElementById('lastModified').textContent = x;
+</script>
+
+</body>
+</html>
