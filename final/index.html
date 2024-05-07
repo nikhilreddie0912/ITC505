@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights Out</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(45deg, #4CAF50, #FFC107);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(5, 50px);
+      grid-gap: 5px;
+    }
+
+    .square {
+      width: 50px;
+      height: 50px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .square.is-off {
+      background-color: #333;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h5 {
+      margin-bottom: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lights Out</h1>
+
+  <div class="container" id="container"></div>
+
+  <footer>
+    <p>
+      Last updated:
+      <span id="lastModified"></span>
+    </p>
+  </footer>
+  <button onclick="startNewGame()">New Game</button>
+  <script>
+    var x = document.lastModified;
+    document.getElementById("lastModified").textContent = x;
+
+    function generateRandomPuzzle() {
+      var solvable = false;
+      while (!solvable) {
+        var squares = document.querySelectorAll(".square");
+        squares.forEach((square) => {
+          if (Math.random() > 0.5) {
+            square.classList.add("is-off");
+          } else {
+            square.classList.remove("is-off");
+          }
+        });
+        solvable = checkIfSolvable();
+      }
+    }
+
+    function toggleLights(row, col) {
+      var squares = document.querySelectorAll(".square");
+      toggleLight(squares[row * 5 + col]);
+      if (row > 0) toggleLight(squares[(row - 1) * 5 + col]);
+      if (row < 4) toggleLight(squares[(row + 1) * 5 + col]);
+      if (col > 0) toggleLight(squares[row * 5 + col - 1]);
+      if (col < 4) toggleLight(squares[row * 5 + col + 1]);
+    }
+
+    function toggleLight(element) {
+      element.classList.toggle("is-off");
+    }
+
+    function checkWin() {
+      var lights = document.querySelectorAll(".square");
+      for (var i = 0; i < lights.length; i++) {
+        if (!lights[i].classList.contains("is-off")) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function handleClick(event) {
+      var row = Math.floor(
+        Array.from(event.target.parentNode.children).indexOf(event.target) /
+        5
+      );
+      var col =
+        Array.from(event.target.parentNode.children).indexOf(event.target) %
+        5;
+      toggleLights(row, col);
+      if (checkWin()) {
+        window.alert("You win!");
+      }
+    }
+
+    function startNewGame() {
+      var container = document.getElementById("container");
+      container.innerHTML = "";
+      init();
+    }
+
+    function toggleAddendum() {
+      var addendum = document.getElementById("addendum");
+      addendum.style.display =
+        addendum.style.display === "none" ? "block" : "none";
+    }
+
+    function checkIfSolvable() {
+      var matrix = [];
+      var lights = document.querySelectorAll(".square");
+      for (var i = 0; i < lights.length; i++) {
+        matrix.push(lights[i].classList.contains("is-off") ? 1 : 0);
+      }
+      return true;
+    }
+
+    function init() {
+      var container = document.getElementById("container");
+      for (var i = 0; i < 25; i++) {
+        var square = document.createElement("div");
+        square.classList.add("square");
+        square.addEventListener("click", handleClick);
+        container.appendChild(square);
+      }
+      generateRandomPuzzle();
+    }
+
+    init();
+  </script>
+  <h5><a href="addendum.html" target="_blank">View addendum here</a></h5>
+</body>
+</html>
